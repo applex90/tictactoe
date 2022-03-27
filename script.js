@@ -16,11 +16,9 @@ function fillShape(id) {
         }
 
         fields[id] = currentShape;
-        console.log(fields);
         draw();
         checkForWin();
     }
-    console.log(fields);
 }
 
 
@@ -81,11 +79,12 @@ function checkForWin() {
         document.getElementById('line-8').style.transform = 'rotate(-45deg) scaleX(1.2)';
     }
 
-    if (winner || fields.every(e => e != "") && fields.length == 9) {
+    if (winner || (!fields.includes(undefined) && fields.length == 9)) {
         gameOver = true;
         setTimeout(function () {
             document.getElementById('game-over').classList.remove('d-none');
             document.getElementById('restart-btn').classList.remove('d-none');
+            console.log(fields);
         }, 1000);
 
     }
